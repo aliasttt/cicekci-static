@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda - Çiçekçi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .navbar {
+            background-color: #28a745 !important;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .nav-link:hover {
+            color: #f8f9fa !important;
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+        .about-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-leaf"></i> Çiçekçi
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Ürünler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">Hakkımızda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">İletişim</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Giriş</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">Kayıt Ol</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container-fluid p-0">
+        <div class="position-relative">
+            <img src="images/hero.jpg" class="w-100" style="height: 400px; object-fit: cover;" alt="Hero Image">
+            <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+                <h1 class="display-4 fw-bold">Hakkımızda</h1>
+                <p class="lead">Doğanın en güzel hediyelerini sizlere sunuyoruz</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <h2 class="mb-4">Hakkımızda</h2>
+                    <p class="lead">Çiçekçi olarak, 2010 yılından beri müşterilerimize en kaliteli çiçekleri sunuyoruz.</p>
+                    <p>İstanbul'un kalbinde yer alan mağazamızda, her gün taze çiçeklerle çalışıyor ve müşterilerimize özel tasarımlar sunuyoruz. Uzman ekibimiz, her türlü özel gün ve etkinlik için mükemmel çiçek aranjmanları hazırlıyor.</p>
+                    <p>Misyonumuz, müşterilerimize en kaliteli çiçekleri, en uygun fiyatlarla sunmak ve her özel anı daha da özel kılmaktır.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="images/rose.jpg" class="img-fluid rounded" alt="Mağazamız">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <div class="container py-5 bg-light">
+        <h2 class="text-center mb-5">Değerlerimiz</h2>
+        <div class="row">
+            <div class="col-md-4 text-center mb-4">
+                <i class="fas fa-heart fa-3x text-primary mb-3"></i>
+                <h4>Kalite</h4>
+                <p>En taze ve kaliteli çiçekleri kullanıyoruz.</p>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <i class="fas fa-clock fa-3x text-primary mb-3"></i>
+                <h4>Zamanında Teslimat</h4>
+                <p>Siparişlerinizi zamanında teslim ediyoruz.</p>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <i class="fas fa-smile fa-3x text-primary mb-3"></i>
+                <h4>Müşteri Memnuniyeti</h4>
+                <p>Müşterilerimizin memnuniyeti bizim için öncelikli.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <section class="container py-5">
+        <h2 class="text-center mb-5">Ekibimiz</h2>
+        <div class="row">
+            <div class="col-md-4 text-center mb-4">
+                <div class="team-member">
+                    <img src="images/orchid.jpg" alt="Ayşe Yılmaz">
+                    <h4>Ayşe Yılmaz</h4>
+                    <p class="text-muted">Kurucu</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <div class="team-member">
+                    <img src="images/daisy.jpg" alt="Mehmet Demir">
+                    <h4>Mehmet Demir</h4>
+                    <p class="text-muted">Çiçek Tasarımcısı</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <div class="team-member">
+                    <img src="images/rose.jpg" alt="Zeynep Kaya">
+                    <h4>Zeynep Kaya</h4>
+                    <p class="text-muted">Müşteri İlişkileri</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Çiçekçi</h5>
+                    <p>En güzel çiçekler, en uygun fiyatlarla.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Hızlı Linkler</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light">Ana Sayfa</a></li>
+                        <li><a href="products.html" class="text-light">Ürünler</a></li>
+                        <li><a href="about.html" class="text-light">Hakkımızda</a></li>
+                        <li><a href="contact.html" class="text-light">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>İletişim</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone"></i> +90 555 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@cicekci.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
