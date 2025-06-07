@@ -97,6 +97,14 @@
         
         // Call on page load
         updateCartCount();
+
+        function handleRegister(event) {
+            event.preventDefault();
+            // Show success message
+            alert('Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz.');
+            // Redirect to login page
+            window.location.href = 'login.html';
+        }
     </script>
 </body>
 </html> 

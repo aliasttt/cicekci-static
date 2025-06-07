@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark mb-4">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <i class="fas fa-leaf"></i> Çiçekçi
+                <i class="fas fa-flower"></i> Çiçekçi
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -24,10 +24,10 @@
                         <a class="nav-link" href="index.html">Ana Sayfa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="products.html">Ürünler</a>
+                        <a class="nav-link" href="about.html">Hakkımızda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Hakkımızda</a>
+                        <a class="nav-link" href="products.html">Ürünler</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">İletişim</a>
@@ -35,9 +35,9 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="cart.html">
+                        <a class="nav-link" href="cart.html">
                             <i class="fas fa-shopping-cart"></i> Sepetim
-                            <span id="cartCount" class="badge bg-danger">0</span>
+                            <span class="badge bg-danger cart-count">0</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -53,13 +53,13 @@
 
     <!-- Checkout Section -->
     <div class="container py-5">
-        <h1 class="mb-4">Ödeme</h1>
+        <h2 class="mb-4">Ödeme</h2>
         <div class="row">
             <div class="col-md-8">
                 <div class="card mb-4">
                     <div class="card-body">
                         <h5 class="card-title mb-4">Teslimat Bilgileri</h5>
-                        <form id="checkoutForm" onsubmit="return handleCheckout(event)">
+                        <form id="checkoutForm">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="firstName" class="form-label">Ad</label>
@@ -104,8 +104,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="expiry" class="form-label">Son Kullanma Tarihi</label>
-                                    <input type="text" class="form-control" id="expiry" placeholder="AA/YY" required>
+                                    <label for="expiryDate" class="form-label">Son Kullanma Tarihi</label>
+                                    <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="cvv" class="form-label">CVV</label>
@@ -121,22 +121,18 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Sipariş Özeti</h5>
-                        <div id="orderSummary">
-                            <!-- Order items will be loaded here -->
-                        </div>
-                        <hr>
                         <div class="d-flex justify-content-between mb-2">
                             <span>Ara Toplam:</span>
-                            <span id="subtotal">0.00 TL</span>
+                            <span>₺299.99</span>
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <span>Kargo:</span>
-                            <span id="shipping">0.00 TL</span>
+                            <span>₺29.99</span>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between mb-3">
                             <strong>Toplam:</strong>
-                            <strong id="total">0.00 TL</strong>
+                            <strong class="text-danger">₺329.98</strong>
                         </div>
                     </div>
                 </div>
@@ -145,89 +141,30 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-light py-4 mt-5">
+    <footer class="footer mt-auto py-3 bg-dark text-white text-center">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>Çiçekçi</h5>
-                    <p>En güzel çiçekler, en uygun fiyatlarla.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Hızlı Linkler</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-light">Ana Sayfa</a></li>
-                        <li><a href="products.html" class="text-light">Ürünler</a></li>
-                        <li><a href="about.html" class="text-light">Hakkımızda</a></li>
-                        <li><a href="contact.html" class="text-light">İletişim</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>İletişim</h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-phone"></i> +90 555 123 4567</li>
-                        <li><i class="fas fa-envelope"></i> info@cicekci.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</li>
-                    </ul>
-                </div>
-            </div>
+            <span>&copy; 2025 Çiçekçi. Tüm hakları saklıdır.</span>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Load order summary
-        function loadOrderSummary() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const orderSummary = document.getElementById('orderSummary');
-            const cartCount = document.getElementById('cartCount');
-            let subtotal = 0;
-
-            cartCount.textContent = cart.length;
-
-            if (cart.length === 0) {
-                window.location.href = 'cart.html';
-                return;
-            }
-
-            orderSummary.innerHTML = '';
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
-
-                orderSummary.innerHTML += `
-                    <div class="d-flex justify-content-between mb-2">
-                        <span>${item.title} x ${item.quantity}</span>
-                        <span>${itemTotal.toFixed(2)} TL</span>
-                    </div>
-                `;
-            });
-
-            const shipping = subtotal > 500 ? 0 : 29.99;
-            const total = subtotal + shipping;
-
-            document.getElementById('subtotal').textContent = subtotal.toFixed(2) + ' TL';
-            document.getElementById('shipping').textContent = shipping.toFixed(2) + ' TL';
-            document.getElementById('total').textContent = total.toFixed(2) + ' TL';
+        // Update cart count
+        function updateCartCount() {
+            const cartCount = document.querySelector('.cart-count');
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            cartCount.textContent = cartItems.length;
         }
 
-        // Handle checkout
-        function handleCheckout(event) {
-            event.preventDefault();
-            
-            // Show success message
+        // Handle form submission
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             alert('Siparişiniz başarıyla alındı! Teşekkür ederiz.');
-            
-            // Clear cart
-            localStorage.removeItem('cart');
-            
-            // Redirect to home page
             window.location.href = 'index.html';
-            
-            return false;
-        }
+        });
 
-        // Load order summary on page load
-        loadOrderSummary();
+        // Call on page load
+        updateCartCount();
     </script>
 </body>
 </html> 
