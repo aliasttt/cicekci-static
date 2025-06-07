@@ -6,6 +6,7 @@
     <title>Hakkımızda - Çiçekçi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <style>
         .navbar {
             background-color: #28a745 !important;
@@ -42,7 +43,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark mb-4">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <i class="fas fa-leaf"></i> Çiçekçi
+                <i class="fas fa-flower"></i> Çiçekçi
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -53,16 +54,22 @@
                         <a class="nav-link" href="index.html">Ana Sayfa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="products.html">Ürünler</a>
+                        <a class="nav-link active" href="about.html">Hakkımızda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="about.html">Hakkımızda</a>
+                        <a class="nav-link" href="products.html">Ürünler</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">İletişim</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i> Sepetim
+                            <span class="badge bg-danger cart-count">0</span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="login.html">Giriş</a>
                     </li>
@@ -86,40 +93,46 @@
     </div>
 
     <!-- About Section -->
-    <section class="about-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <h2 class="mb-4">Hakkımızda</h2>
-                    <p class="lead">Çiçekçi olarak, 2010 yılından beri müşterilerimize en kaliteli çiçekleri sunuyoruz.</p>
-                    <p>İstanbul'un kalbinde yer alan mağazamızda, her gün taze çiçeklerle çalışıyor ve müşterilerimize özel tasarımlar sunuyoruz. Uzman ekibimiz, her türlü özel gün ve etkinlik için mükemmel çiçek aranjmanları hazırlıyor.</p>
-                    <p>Misyonumuz, müşterilerimize en kaliteli çiçekleri, en uygun fiyatlarla sunmak ve her özel anı daha da özel kılmaktır.</p>
-                </div>
-                <div class="col-lg-6">
-                    <img src="images/rose.jpg" class="img-fluid rounded" alt="Mağazamız">
-                </div>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <h2 class="mb-4">Hakkımızda</h2>
+                <p class="lead">2010 yılından beri müşterilerimize en kaliteli çiçekleri sunuyoruz.</p>
+                <p>Çiçekçi olarak, müşterilerimize en taze ve güzel çiçekleri sunmayı hedefliyoruz. Her gün yüzlerce çiçek siparişini özenle hazırlayıp, zamanında teslim ediyoruz.</p>
+                <p>Mağazamızda güller, orkideler, buketler ve daha birçok çiçek çeşidi bulabilirsiniz. Ayrıca özel günler için özel tasarım buketler de hazırlıyoruz.</p>
+            </div>
+            <div class="col-md-6 mb-4">
+                <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded" alt="Çiçek Mağazamız">
             </div>
         </div>
-    </section>
 
-    <!-- Values Section -->
-    <div class="container py-5 bg-light">
-        <h2 class="text-center mb-5">Değerlerimiz</h2>
-        <div class="row">
-            <div class="col-md-4 text-center mb-4">
-                <i class="fas fa-heart fa-3x text-primary mb-3"></i>
-                <h4>Kalite</h4>
-                <p>En taze ve kaliteli çiçekleri kullanıyoruz.</p>
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Kalite">
+                    <div class="card-body">
+                        <h5 class="card-title">Kalite</h5>
+                        <p class="card-text">En taze ve kaliteli çiçekleri sunuyoruz.</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4 text-center mb-4">
-                <i class="fas fa-clock fa-3x text-primary mb-3"></i>
-                <h4>Zamanında Teslimat</h4>
-                <p>Siparişlerinizi zamanında teslim ediyoruz.</p>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Hızlı Teslimat">
+                    <div class="card-body">
+                        <h5 class="card-title">Hızlı Teslimat</h5>
+                        <p class="card-text">Siparişlerinizi aynı gün teslim ediyoruz.</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4 text-center mb-4">
-                <i class="fas fa-smile fa-3x text-primary mb-3"></i>
-                <h4>Müşteri Memnuniyeti</h4>
-                <p>Müşterilerimizin memnuniyeti bizim için öncelikli.</p>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Özel Tasarım">
+                    <div class="card-body">
+                        <h5 class="card-title">Özel Tasarım</h5>
+                        <p class="card-text">İsteğinize göre özel buketler hazırlıyoruz.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -153,34 +166,23 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-light py-4 mt-5">
+    <footer class="footer mt-auto py-3 bg-dark text-white text-center">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>Çiçekçi</h5>
-                    <p>En güzel çiçekler, en uygun fiyatlarla.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Hızlı Linkler</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-light">Ana Sayfa</a></li>
-                        <li><a href="products.html" class="text-light">Ürünler</a></li>
-                        <li><a href="about.html" class="text-light">Hakkımızda</a></li>
-                        <li><a href="contact.html" class="text-light">İletişim</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>İletişim</h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-phone"></i> +90 555 123 4567</li>
-                        <li><i class="fas fa-envelope"></i> info@cicekci.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</li>
-                    </ul>
-                </div>
-            </div>
+            <span>&copy; 2025 Çiçekçi. Tüm hakları saklıdır.</span>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Update cart count
+        function updateCartCount() {
+            const cartCount = document.querySelector('.cart-count');
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            cartCount.textContent = cartItems.length;
+        }
+
+        // Call on page load
+        updateCartCount();
+    </script>
 </body>
 </html> 

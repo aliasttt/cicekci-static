@@ -90,21 +90,22 @@
     <script>
         // Update cart count
         function updateCartCount() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const count = cart.reduce((total, item) => total + item.quantity, 0);
-            document.getElementById('cartCount').textContent = count;
+            const cartCount = document.querySelector('.cart-count');
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            cartCount.textContent = cartItems.length;
         }
         
         // Call on page load
         updateCartCount();
 
-        function handleRegister(event) {
-            event.preventDefault();
+        // Handle form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
             // Show success message
             alert('Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz.');
             // Redirect to login page
             window.location.href = 'login.html';
-        }
+        });
     </script>
 </body>
 </html> 
