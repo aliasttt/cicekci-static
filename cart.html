@@ -58,7 +58,7 @@
             <!-- Cart items will be displayed here -->
         </div>
         <div class="text-center mt-4">
-            <h4>Toplam: <span id="totalPrice">₺0.00</span></h4>
+            <h4>Toplam Tutar: <span id="totalPrice">₺0.00</span></h4>
             <a href="checkout.html" class="btn btn-primary mt-3">Ödemeye Geç</a>
         </div>
     </div>
@@ -117,7 +117,8 @@
 
             cartItems.forEach((item, index) => {
                 const price = parseFloat(item.price.replace('₺', ''));
-                total += price;
+                const quantity = item.quantity || 1;
+                total += price * quantity;
 
                 const itemElement = document.createElement('div');
                 itemElement.className = 'col-md-4 mb-4';
@@ -127,7 +128,15 @@
                         <div class="card-body">
                             <h5 class="card-title">${item.name}</h5>
                             <p class="card-text">${item.price}</p>
-                            <button class="btn btn-danger" onclick="removeFromCart(${index})">Kaldır</button>
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <div class="input-group" style="width: 120px;">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity(${index}, -1)">-</button>
+                                    <input type="text" class="form-control text-center" value="${quantity}" readonly>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity(${index}, 1)">+</button>
+                                </div>
+                                <span class="text-primary">₺${(price * quantity).toFixed(2)}</span>
+                            </div>
+                            <button class="btn btn-danger w-100" onclick="removeFromCart(${index})">Sepetten Kaldır</button>
                         </div>
                     </div>
                 `;
@@ -135,6 +144,19 @@
             });
 
             totalPriceElement.textContent = `₺${total.toFixed(2)}`;
+        }
+
+        // Update item quantity
+        function updateQuantity(index, change) {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            cartItems[index].quantity = (cartItems[index].quantity || 1) + change;
+            
+            if (cartItems[index].quantity < 1) {
+                cartItems[index].quantity = 1;
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            displayCartItems();
         }
 
         // Remove item from cart
