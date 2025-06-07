@@ -149,5 +149,41 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Update cart count
+        function updateCartCount() {
+            const cartCount = document.querySelector('.cart-count');
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            cartCount.textContent = cartItems.length;
+        }
+
+        // Add to cart function
+        function addToCart(productName, price, image) {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            cartItems.push({
+                name: productName,
+                price: price,
+                image: image
+            });
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            updateCartCount();
+            alert('Ürün sepete eklendi!');
+        }
+
+        // Call on page load
+        updateCartCount();
+
+        // Add click event to all add to cart buttons
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = this.closest('.card');
+                const productName = card.querySelector('.card-title').textContent;
+                const price = card.querySelector('.card-text strong').textContent;
+                const image = card.querySelector('img').src;
+                addToCart(productName, price, image);
+            });
+        });
+    </script>
 </body>
 </html> 

@@ -53,63 +53,42 @@
 
     <!-- Cart Section -->
     <div class="container py-5">
-        <h2 class="mb-4">Sepetim</h2>
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="cart-items">
-                            <!-- Sample cart item -->
-                            <div class="cart-item d-flex align-items-center mb-3">
-                                <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" class="img-thumbnail me-3" style="width: 100px;" alt="Gül Buketi">
-                                <div class="flex-grow-1">
-                                    <h5 class="mb-1">Gül Buketi</h5>
-                                    <p class="mb-1">12 adet kırmızı gül</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="input-group me-3" style="width: 120px;">
-                                            <button class="btn btn-outline-secondary" type="button">-</button>
-                                            <input type="text" class="form-control text-center" value="1">
-                                            <button class="btn btn-outline-secondary" type="button">+</button>
-                                        </div>
-                                        <span class="text-danger fw-bold">₺299.99</span>
-                                    </div>
-                                </div>
-                                <button class="btn btn-outline-danger ms-3">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Sipariş Özeti</h5>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Ara Toplam:</span>
-                            <span>₺299.99</span>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Kargo:</span>
-                            <span>₺29.99</span>
-                        </div>
-                        <hr>
-                        <div class="d-flex justify-content-between mb-3">
-                            <strong>Toplam:</strong>
-                            <strong class="text-danger">₺329.98</strong>
-                        </div>
-                        <a href="checkout.html" class="btn btn-primary w-100">Ödemeye Geç</a>
-                    </div>
-                </div>
-            </div>
+        <h2 class="text-center mb-4">Sepetim</h2>
+        <div id="cartItems" class="row">
+            <!-- Cart items will be displayed here -->
+        </div>
+        <div class="text-center mt-4">
+            <h4>Toplam: <span id="totalPrice">₺0.00</span></h4>
+            <a href="checkout.html" class="btn btn-primary mt-3">Ödemeye Geç</a>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 bg-dark text-white text-center">
+    <footer class="bg-dark text-light py-4 mt-5">
         <div class="container">
-            <span>&copy; 2025 Çiçekçi. Tüm hakları saklıdır.</span>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Çiçekçi</h5>
+                    <p>En güzel çiçekler, en uygun fiyatlarla.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Hızlı Linkler</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light">Ana Sayfa</a></li>
+                        <li><a href="products.html" class="text-light">Ürünler</a></li>
+                        <li><a href="about.html" class="text-light">Hakkımızda</a></li>
+                        <li><a href="contact.html" class="text-light">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>İletişim</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone"></i> +90 555 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@cicekci.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -118,13 +97,58 @@
         // Update cart count
         function updateCartCount() {
             const cartCount = document.querySelector('.cart-count');
-            // Get cart items from localStorage
             const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
             cartCount.textContent = cartItems.length;
         }
 
+        // Display cart items
+        function displayCartItems() {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartContainer = document.getElementById('cartItems');
+            const totalPriceElement = document.getElementById('totalPrice');
+            let total = 0;
+
+            cartContainer.innerHTML = '';
+            
+            if (cartItems.length === 0) {
+                cartContainer.innerHTML = '<div class="col-12 text-center"><p>Sepetiniz boş</p></div>';
+                return;
+            }
+
+            cartItems.forEach((item, index) => {
+                const price = parseFloat(item.price.replace('₺', ''));
+                total += price;
+
+                const itemElement = document.createElement('div');
+                itemElement.className = 'col-md-4 mb-4';
+                itemElement.innerHTML = `
+                    <div class="card">
+                        <img src="${item.image}" class="card-img-top" alt="${item.name}" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">${item.name}</h5>
+                            <p class="card-text">${item.price}</p>
+                            <button class="btn btn-danger" onclick="removeFromCart(${index})">Kaldır</button>
+                        </div>
+                    </div>
+                `;
+                cartContainer.appendChild(itemElement);
+            });
+
+            totalPriceElement.textContent = `₺${total.toFixed(2)}`;
+        }
+
+        // Remove item from cart
+        function removeFromCart(index) {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            cartItems.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            displayCartItems();
+            updateCartCount();
+        }
+
         // Call on page load
         updateCartCount();
+        displayCartItems();
     </script>
 </body>
 </html> 
